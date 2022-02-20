@@ -388,5 +388,5 @@ MigrationBackup/
 .ionide/
 
 # Other
-.vs/*
-*.sue
+.vs/
+*.suo
