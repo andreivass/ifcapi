@@ -7,6 +7,6 @@
         public string? Code { get; set; }
         public string? Description { get; set; }
         public string? IfcFileName { get; set; }
-        public List<WorkPackage> WorkPackages{ get; set; }
+        public List<WorkPackage>? WorkPackages { get; set; }
     }
 }

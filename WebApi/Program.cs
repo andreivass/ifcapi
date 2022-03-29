@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WebApi;
+using WebApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,28 +26,44 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
+#region Projects
+app.MapGet("/projects", async (AppDbContext dbContext) => 
+    await dbContext.Projects.ToListAsync());
 
-app.MapGet("/weatherforecast", () =>
+app.MapGet("/projects/{id}", async (int id, AppDbContext dbContext) =>
+    await dbContext.Projects.FindAsync(id)
+        is Project project ? Results.Ok(project) : Results.NotFound());
+
+app.MapPost("/projects", async (Project project, AppDbContext dbContext) =>
 {
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-       new WeatherForecast
-       (
-           DateTime.Now.AddDays(index),
-           Random.Shared.Next(-20, 55),
-           summaries[Random.Shared.Next(summaries.Length)]
-       ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+    dbContext.Projects.Add(project);
+    await dbContext.SaveChangesAsync();
+
+    return Results.Created($"/projects/{project.ProjectId}", project);
+});
+
+app.MapPut("/projects/{id}", async (int id, Project project, AppDbContext dbContext) =>
+{
+    dbContext.Projects.Update(project);
+
+    await dbContext.SaveChangesAsync();
+
+    return Results.Ok(project);
+});
+
+app.MapDelete("/projects/{id}", async (int id, AppDbContext dbContext) =>
+{
+    if (await dbContext.Projects.FindAsync(id) is Project project)
+    {
+        dbContext.Projects.Remove(project);
+        await dbContext.SaveChangesAsync();
+
+        return Results.Ok();
+    }
+
+    return Results.NotFound();
+});
+
+#endregion Projects
 
 app.Run();
-
-internal record WeatherForecast(DateTime Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
