@@ -9,9 +9,6 @@
         public string? IfcStorey { get; set; }
         public string? Name { get; set; }
         public string? ObjectType { get; set; }
-        public int WorkPackageId { get; set; }
-        public WorkPackage? WorkPackage { get; set; }
-        public int IfcElementId { get; set; }
-        public IfcElement? IfcElement { get; set; }
+        public List<ModelElementInWorkPackage>? ModelElementInWorkPackages { get; set; }
     }
 }

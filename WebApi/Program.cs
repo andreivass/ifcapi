@@ -76,6 +76,14 @@ app.MapGet("/ccieepps/{id}", async (int id, AppDbContext dbContext) =>
     await dbContext.CciEePps.FindAsync(id)
         is CciEePp cciEepp ? Results.Ok(cciEepp) : Results.NotFound());
 
+app.MapPost("/ccieepps/list", async (List<CciEePp> cciEepps, AppDbContext dbContext) =>
+{
+    await dbContext.CciEePps.AddRangeAsync(cciEepps);
+    await dbContext.SaveChangesAsync();
+
+    return Results.Created($"/ccieepps/", cciEepps);
+});
+
 app.MapPost("/ccieepps", async (CciEePp cciEepp, AppDbContext dbContext) =>
 {
     dbContext.CciEePps.Add(cciEepp);
@@ -115,55 +123,6 @@ app.MapDelete("/ccieepps/{id}", async (int id, AppDbContext dbContext) =>
 });
 
 #endregion CciEePps
-
-#region IfcElements
-
-app.MapGet("/ifcelements", async (AppDbContext dbContext) =>
-    await dbContext.IfcElements.ToListAsync());
-
-app.MapGet("/ifcelements/{id}", async (int id, AppDbContext dbContext) =>
-    await dbContext.IfcElements.FindAsync(id)
-        is IfcElement cciEepp ? Results.Ok(cciEepp) : Results.NotFound());
-
-app.MapPost("/ifcelements", async (IfcElement ifcElement, AppDbContext dbContext) =>
-{
-    dbContext.IfcElements.Add(ifcElement);
-    await dbContext.SaveChangesAsync();
-
-    return Results.Created($"/ifcelements/{ifcElement.IfcElementId}", ifcElement);
-});
-
-app.MapPost("/ifcelementslist", async (ICollection<IfcElement> ifcElement, AppDbContext dbContext) =>
-{
-    dbContext.IfcElements.AddRange(ifcElement);
-    await dbContext.SaveChangesAsync();
-
-    return Results.Ok(ifcElement);
-});
-
-app.MapPut("/ifcelements/{id}", async (int id, IfcElement ifcElement, AppDbContext dbContext) =>
-{
-    dbContext.IfcElements.Update(ifcElement);
-
-    await dbContext.SaveChangesAsync();
-
-    return Results.Ok(ifcElement);
-});
-
-app.MapDelete("/ifcelements/{id}", async (int id, AppDbContext dbContext) =>
-{
-    if (await dbContext.IfcElements.FindAsync(id) is IfcElement ifcElement)
-    {
-        dbContext.IfcElements.Remove(ifcElement);
-        await dbContext.SaveChangesAsync();
-
-        return Results.Ok();
-    }
-
-    return Results.NotFound();
-});
-
-#endregion IfcElements
 
 #region ModelElement
 
@@ -210,6 +169,9 @@ app.MapDelete("/modelelements/{id}", async (int id, AppDbContext dbContext) =>
 
 app.MapGet("/workpackages", async (AppDbContext dbContext) =>
     await dbContext.WorkPackages.ToListAsync());
+
+app.MapGet("/workpackages/byproject", async (int projectId, AppDbContext dbContext) =>
+    await dbContext.WorkPackages.Where(x => x.ProjectId == projectId).ToListAsync());
 
 app.MapGet("/workpackages/{id}", async (int id, AppDbContext dbContext) =>
     await dbContext.WorkPackages.FindAsync(id)
