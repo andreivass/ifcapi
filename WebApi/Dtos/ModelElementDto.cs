@@ -1,14 +1,14 @@
-﻿namespace WebApi.Models
+﻿using WebApi.Models;
+
+namespace WebApi.Dtos
 {
-    public class ModelElement
+    public class ModelElementDto
     {
-        public int ModelElementId { get; set; }
         public string? Guid { get; set; }
         public int ExpressId { get; set; }
         public string? IfcType { get; set; }
         public string? IfcStorey { get; set; }
         public string? Name { get; set; }
         public string? ObjectType { get; set; }
-        public List<ModelElementInWorkPackage>? ModelElementInWorkPackages { get; set; }
     }
 }

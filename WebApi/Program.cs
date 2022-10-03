@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using WebApi;
+using WebApi.Dtos;
+using WebApi.Helpers;
 using WebApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -28,7 +30,7 @@ app.UseHttpsRedirection();
 
 #region Projects
 
-app.MapGet("/projects", async (AppDbContext dbContext) => 
+app.MapGet("/projects", async (AppDbContext dbContext) =>
     await dbContext.Projects.ToListAsync());
 
 app.MapGet("/projects/{id}", async (int id, AppDbContext dbContext) =>
@@ -128,7 +130,7 @@ app.MapDelete("/ccieepps/{id}", async (int id, AppDbContext dbContext) =>
 
 app.MapGet("/modelelements", async (AppDbContext dbContext) =>
     await dbContext.ModelElements.ToListAsync());
-    
+
 app.MapGet("/modelelements/{id}", async (int id, AppDbContext dbContext) =>
     await dbContext.ModelElements.FindAsync(id)
         is ModelElement modelElement ? Results.Ok(modelElement) : Results.NotFound());
@@ -168,21 +170,94 @@ app.MapDelete("/modelelements/{id}", async (int id, AppDbContext dbContext) =>
 #region WorkPackage
 
 app.MapGet("/workpackages", async (AppDbContext dbContext) =>
-    await dbContext.WorkPackages.ToListAsync());
+    await dbContext.WorkPackages
+    //.Include(x => x.ModelElementInWorkPackages)
+    .ToListAsync());
 
-app.MapGet("/workpackages/byproject", async (int projectId, AppDbContext dbContext) =>
-    await dbContext.WorkPackages.Where(x => x.ProjectId == projectId).ToListAsync());
+app.MapGet("/workpackages/byproject/", async (int id, AppDbContext dbContext) =>
+{
+    var workPackages = await dbContext.WorkPackages.Where(x => x.ProjectId == id)
+        .Include(x => x.ModelElementInWorkPackages)
+            .ThenInclude(x => x.ModelElement)
+        .ToListAsync();
+
+    var dtos = new List<WorkPackageDto>();
+    foreach (var wp in workPackages)
+    {
+        var wpDto = new WorkPackageDto
+        {
+            WorkPackageId = wp.WorkPackageId,
+            Name = wp.Name,
+            Description = wp.Description,
+            Code = wp.Code,
+            ProjectId = wp.ProjectId,
+            CciEePpId = wp.CciEePpId
+        };
+
+        if (wp.ModelElementInWorkPackages != null)
+        {
+            wpDto.ModelElements = DtoMappingHelper.MapModelElementsToDtos(wp.ModelElementInWorkPackages);
+        };
+
+        dtos.Add(wpDto);
+    }
+
+    return dtos;
+});
+
 
 app.MapGet("/workpackages/{id}", async (int id, AppDbContext dbContext) =>
     await dbContext.WorkPackages.FindAsync(id)
         is WorkPackage workPackage ? Results.Ok(workPackage) : Results.NotFound());
 
-app.MapPost("/workpackages", async (WorkPackage workPackage, AppDbContext dbContext) =>
+app.MapPost("/workpackages", async (WorkPackageDto dto, AppDbContext dbContext) =>
 {
+    var workPackage = new WorkPackage
+    {
+        Name = dto.Name,
+        Description = dto.Description,
+        Code = dto.Code,
+        ProjectId = dto.ProjectId,
+        CciEePpId = dto.CciEePpId
+    };
     dbContext.WorkPackages.Add(workPackage);
     await dbContext.SaveChangesAsync();
 
-    return Results.Created($"/workpackages/{workPackage.WorkPackageId}", workPackage);
+    if (dto.ModelElements != null)
+    {
+        foreach (var element in dto.ModelElements)
+        {
+            var existingElement = await dbContext.ModelElements.FirstOrDefaultAsync(x => x.Guid == element.Guid);
+            var newElementId = 0;
+            if (existingElement == null)
+            {
+                var modelElement = new ModelElement
+                {
+                    ExpressId = element.ExpressId,
+                    Guid = element.Guid,
+                    IfcStorey = element.IfcStorey,
+                    IfcType = element.IfcType,
+                    Name = element.Name,
+                    ObjectType = element.ObjectType
+                };
+
+                dbContext.ModelElements.Add(modelElement);
+                await dbContext.SaveChangesAsync();
+
+                newElementId = modelElement.ModelElementId;
+            }
+
+            dbContext.ModelElementInWorkPackages.Add(new()
+            {
+                ModelElementId = existingElement?.ModelElementId ?? newElementId,
+                WorkPackageId = workPackage.WorkPackageId
+            });
+
+            await dbContext.SaveChangesAsync();
+        }
+    }
+
+    return Results.Created($"/workpackages/{dto.WorkPackageId}", dto);
 });
 
 app.MapPut("/workpackages/{id}", async (int id, WorkPackage workPackage, AppDbContext dbContext) =>
