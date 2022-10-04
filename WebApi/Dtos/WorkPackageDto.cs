@@ -11,5 +11,6 @@ namespace WebApi.Dtos
         public List<ModelElementDto>? ModelElements { get; set; }
         public int ProjectId { get; set; }
         public int CciEePpId { get; set; }
+        public string? ClassificatorNameEe { get; set; }
     }
 }

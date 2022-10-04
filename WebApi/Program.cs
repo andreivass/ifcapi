@@ -199,6 +199,8 @@ app.MapGet("/workpackages/byproject/", async (int id, AppDbContext dbContext) =>
             wpDto.ModelElements = DtoMappingHelper.MapModelElementsToDtos(wp.ModelElementInWorkPackages);
         };
 
+        wpDto.ClassificatorNameEe = (await dbContext.CciEePps.FindAsync(wp.CciEePpId))!.TermEe;
+
         dtos.Add(wpDto);
     }
 
@@ -222,6 +224,7 @@ app.MapPost("/workpackages", async (WorkPackageDto dto, AppDbContext dbContext) 
     };
     dbContext.WorkPackages.Add(workPackage);
     await dbContext.SaveChangesAsync();
+    dto.WorkPackageId = workPackage.WorkPackageId;
 
     if (dto.ModelElements != null)
     {
