@@ -86,9 +86,17 @@ app.MapPost("/login", [AllowAnonymous] async (LoginDto loginDto) =>
                 isPersistent: false,
                 lockoutOnFailure: false);
 
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
+    var appUser = await userManager.FindByEmailAsync(loginDto.Email);
     if (result.Succeeded)
     {
-        return Results.Ok(JwtHelper.BuildToken(loginDto, builder.Configuration));
+        var loginSuccessDto = new LoginSuccessDto
+        {
+            UserId = appUser.Id,
+            Token = JwtHelper.BuildToken(loginDto, builder.Configuration)
+        };
+
+        return Results.Ok(loginSuccessDto);
     }
 
     return Results.Unauthorized();
@@ -117,7 +125,13 @@ app.MapPost("/register", [AllowAnonymous] async (RegisterDto registerDto) =>
         var user = await userManager.FindByEmailAsync(appUser.Email);
         if (user != null)
         {
-            return Results.Ok(JwtHelper.BuildToken(registerDto, builder.Configuration));
+            var loginSuccessDto = new LoginSuccessDto
+            {
+                UserId = appUser.Id,
+                Token = JwtHelper.BuildToken(registerDto, builder.Configuration)
+            };
+
+            return Results.Ok(loginSuccessDto);
         }
         return Results.BadRequest("User not found after creation.");
     }
