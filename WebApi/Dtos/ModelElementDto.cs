@@ -2,6 +2,9 @@
 
 namespace WebApi.Dtos
 {
+    /// <summary>
+    /// Dto for model element.
+    /// </summary>
     public class ModelElementDto
     {
         public string? Guid { get; set; }

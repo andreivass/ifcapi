@@ -1,15 +1,59 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using WebApi;
 using WebApi.Dtos;
 using WebApi.Helpers;
 using WebApi.Models;
+using WebApi.Models.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+
+#region JWT authentication configuration
+
+builder.Services.AddIdentity<AppUser, AppRole>()
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.AddAuthentication(o =>
+{
+    o.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    o.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    o.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(o =>
+{
+    o.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey
+            (Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true
+    };
+});
+
+builder.Services.AddAuthorization();
+
+#endregion JWT authentication configuration
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(o =>
+{
+    o.SwaggerDoc("v1", new OpenApiInfo { Title = "IFC App API", Version = "v1" });
+    o.AddSecurityDefinition("Bearer", JwtHelper.CreateSecurityScheme());
+    o.AddSecurityRequirement(JwtHelper.CreateSecurityRequirements());
+});
 
 var connectionString = builder.Configuration.GetConnectionString("MariaDbConnection");
 builder.Services.AddDbContext<AppDbContext>(options =>
@@ -27,10 +71,72 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
+
+#region authentication
+
+var scope = app.Services.CreateScope();
+
+app.MapPost("/login", [AllowAnonymous] async (LoginDto loginDto) =>
+{
+    var result = await scope.ServiceProvider.GetRequiredService<SignInManager<AppUser>>().PasswordSignInAsync(
+                loginDto.Email,
+                loginDto.Password,
+                isPersistent: false,
+                lockoutOnFailure: false);
+
+    if (result.Succeeded)
+    {
+        return Results.Ok(JwtHelper.BuildToken(loginDto, builder.Configuration));
+    }
+
+    return Results.Unauthorized();
+});
+
+app.MapPost("/register", [AllowAnonymous] async (RegisterDto registerDto) =>
+{
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<AppUser>>();
+    var appUser = await userManager.FindByEmailAsync(registerDto.Email);
+    if (appUser != null)
+    {
+        return Results.NotFound("User already registered!");
+    }
+
+    appUser = new AppUser
+    {
+        Email = registerDto.Email,
+        UserName = registerDto.Email,
+        FirstName = registerDto.FirstName,
+        LastName = registerDto.LastName,
+    };
+    var result = await userManager.CreateAsync(appUser, registerDto.Password);
+    var errors = string.Empty;
+    if (result.Succeeded)
+    {
+        var user = await userManager.FindByEmailAsync(appUser.Email);
+        if (user != null)
+        {
+            return Results.Ok(JwtHelper.BuildToken(registerDto, builder.Configuration));
+        }
+        return Results.BadRequest("User not found after creation.");
+    }
+    else
+    {
+        foreach (var error in result.Errors)
+        {
+            errors += error.Description;
+        }
+    }
+
+    return Results.BadRequest($"Registration failed with errors: {errors}");
+});
+
+#endregion authentication
 
 #region Projects
 
-app.MapGet("/projects", async (AppDbContext dbContext) =>
+app.MapGet("/projects", [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)] async (AppDbContext dbContext) =>
     await dbContext.Projects.ToListAsync());
 
 app.MapGet("/projects/{id}", async (int id, AppDbContext dbContext) =>
@@ -74,7 +180,7 @@ app.MapDelete("/projects/{id}", async (int id, AppDbContext dbContext) =>
 app.MapGet("/ccieepps", async (AppDbContext dbContext) =>
     await dbContext.CciEePps.ToListAsync());
 
-app.MapGet("/ccieepps/{id}", async (int id, AppDbContext dbContext) =>
+/*app.MapGet("/ccieepps/{id}", async (int id, AppDbContext dbContext) =>
     await dbContext.CciEePps.FindAsync(id)
         is CciEePp cciEepp ? Results.Ok(cciEepp) : Results.NotFound());
 
@@ -122,13 +228,13 @@ app.MapDelete("/ccieepps/{id}", async (int id, AppDbContext dbContext) =>
     }
 
     return Results.NotFound();
-});
+});*/
 
 #endregion CciEePps
 
 #region ModelElement
 
-app.MapGet("/modelelements", async (AppDbContext dbContext) =>
+/*app.MapGet("/modelelements", async (AppDbContext dbContext) =>
     await dbContext.ModelElements.ToListAsync());
 
 app.MapGet("/modelelements/{id}", async (int id, AppDbContext dbContext) =>
@@ -163,16 +269,15 @@ app.MapDelete("/modelelements/{id}", async (int id, AppDbContext dbContext) =>
     }
 
     return Results.NotFound();
-});
+});*/
 
 #endregion ModelElement
 
 #region WorkPackage
 
-app.MapGet("/workpackages", async (AppDbContext dbContext) =>
+/*app.MapGet("/workpackages", async (AppDbContext dbContext) =>
     await dbContext.WorkPackages
-    //.Include(x => x.ModelElementInWorkPackages)
-    .ToListAsync());
+    .ToListAsync());*/
 
 app.MapGet("/workpackages/byproject/", async (int id, AppDbContext dbContext) =>
 {
@@ -208,9 +313,9 @@ app.MapGet("/workpackages/byproject/", async (int id, AppDbContext dbContext) =>
 });
 
 
-app.MapGet("/workpackages/{id}", async (int id, AppDbContext dbContext) =>
+/*app.MapGet("/workpackages/{id}", async (int id, AppDbContext dbContext) =>
     await dbContext.WorkPackages.FindAsync(id)
-        is WorkPackage workPackage ? Results.Ok(workPackage) : Results.NotFound());
+        is WorkPackage workPackage ? Results.Ok(workPackage) : Results.NotFound());*/
 
 app.MapPost("/workpackages", async (WorkPackageDto dto, AppDbContext dbContext) =>
 {

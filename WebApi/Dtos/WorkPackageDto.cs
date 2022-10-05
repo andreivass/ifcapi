@@ -2,6 +2,9 @@
 
 namespace WebApi.Dtos
 {
+    /// <summary>
+    /// Dto for work package.
+    /// </summary>
     public class WorkPackageDto
     {
         public int WorkPackageId { get; set; }

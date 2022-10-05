@@ -3,9 +3,17 @@ using WebApi.Models;
 
 namespace WebApi.Helpers
 {
+    /// <summary>
+    /// Helper class for dto mapping.
+    /// </summary>
     public static class DtoMappingHelper
     {
-        public static List<ModelElementDto> MapModelElementsToDtos(List<ModelElementInWorkPackage> modelXrefs)
+        /// <summary>
+        /// Maps model elements to dtos.
+        /// </summary>
+        /// <param name="modelXrefs">Model element xrefs.</param>
+        /// <returns>Model element dtos.</returns>
+        public static List<ModelElementDto> MapModelElementsToDtos(ICollection<ModelElementInWorkPackage> modelXrefs)
         {
             var dtos = new List<ModelElementDto>();
             foreach (var xref in modelXrefs)

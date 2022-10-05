@@ -1,5 +1,8 @@
 ﻿namespace WebApi.Models
 {
+    /// <summary>
+    /// Model representing a classificator.
+    /// </summary>
     public class CciEePp
     {
         public int CciEePpId { get; set; }

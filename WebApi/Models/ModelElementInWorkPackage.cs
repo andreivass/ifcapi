@@ -1,5 +1,8 @@
 ﻿namespace WebApi.Models
 {
+    /// <summary>
+    /// Xref model between ModelElement and WorkPackage.
+    /// </summary>
     public class ModelElementInWorkPackage
     {
         public int ModelElementInWorkPackageId { get; set; }
