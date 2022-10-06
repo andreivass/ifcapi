@@ -1,0 +1,1062 @@
+﻿[
+  {
+    "Level1": "A?",
+    "Level2": null,
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Ettevalmistustööd",
+    "DefinitionEe": "ehitustöödele eelnevad ettevalmistavad tööd, raadamine, maa-ala puhastamine ",
+    "TermEn": "Preliminary works",
+    "DefinitionEn": "pre-construction works, remediation work, clearing etc."
+  },
+  {
+    "Level1": null,
+    "Level2": "AA",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Maa-ala puhastamine, raadamine",
+    "DefinitionEe": null,
+    "TermEn": "Remediation of the building site",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "AB",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Ehitusplatsi piirded",
+    "DefinitionEe": null,
+    "TermEn": "Fencing",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "AC",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Ligipääasu- ja platsisisesed teed",
+    "DefinitionEe": null,
+    "TermEn": "Access and on-site roads",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "AD",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Laoplatsid",
+    "DefinitionEe": null,
+    "TermEn": "Storage sites",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "AE",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Soojakud jm ehitised (wc)",
+    "DefinitionEe": null,
+    "TermEn": "Site offices and facilities",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "AF",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Ajutised kommunikatsioonid (elekter, vesi, jm)",
+    "DefinitionEe": null,
+    "TermEn": "Temporary services (electricity, water etc.)",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "AG",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Ehitusmasinate transpordi ja paigaldusega seotud tööd",
+    "DefinitionEe": null,
+    "TermEn": "Work for the transport and installation of construction machinery",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": "B?",
+    "Level2": null,
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Lammutustööd",
+    "DefinitionEe": "olemasolevate ehitiste (sh teede, platside lammutus, hoonesisesed lammutustööd, nii täielik kui ka osaline lammutamine või ümberpaigutamine",
+    "TermEn": "Demolition works",
+    "DefinitionEn": "removal, dismantling and demolition of existing buildings (including roads, squares, interior demolition works, complete and partial demolition or displacement)"
+  },
+  {
+    "Level1": null,
+    "Level2": "BA",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Ehitiste lammutustööd",
+    "DefinitionEe": null,
+    "TermEn": "Demolition of buildings",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "BB",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Hoonesisesed lammutustööd",
+    "DefinitionEe": null,
+    "TermEn": "Interior demolition",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "BC",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Ehitiste ümberpaigutus",
+    "DefinitionEe": null,
+    "TermEn": "Displacement of buildings",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": "C?",
+    "Level2": null,
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Puurimis- ja lõhketööd",
+    "DefinitionEe": "ehitus- ja lammutustöödega seonduvad puurimis- ja  lõhketööd",
+    "TermEn": "Drilling and blasting works",
+    "DefinitionEn": "drilling and blasting  related to construction and demolition works"
+  },
+  {
+    "Level1": "D?",
+    "Level2": null,
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Pinnasetööd",
+    "DefinitionEe": "hoonete, rajatiste (sh vesiehitiste), teede, väljakute ja platside rajamisega seonduvad pinnasetööd",
+    "TermEn": "Groundworks",
+    "DefinitionEn": "groundworks related to building, structures (incl. hydro structures), roads and squares"
+  },
+  {
+    "Level1": null,
+    "Level2": "DA",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Vertikaalplaneerimine",
+    "DefinitionEe": null,
+    "TermEn": "Levelling",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "DB",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Tihendamine",
+    "DefinitionEe": null,
+    "TermEn": "Compaction",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "DC",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Kaevetööd",
+    "DefinitionEe": null,
+    "TermEn": "Excavation",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "DD",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Drenaažitööd",
+    "DefinitionEe": null,
+    "TermEn": "Dewatering",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "DE",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Geotekstiilide paigaldus",
+    "DefinitionEe": null,
+    "TermEn": "Installation of geotextiles",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "DF",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Tagasitäitetööd",
+    "DefinitionEe": null,
+    "TermEn": "Back-filling",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": "E?",
+    "Level2": null,
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Vaiatööd",
+    "DefinitionEe": "vaiade rammimine, süvistamine ja kohtvaiade ehitamine",
+    "TermEn": "Piling ",
+    "DefinitionEn": "piling"
+  },
+  {
+    "Level1": null,
+    "Level2": "EA",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Vaiade rammimine",
+    "DefinitionEe": null,
+    "TermEn": "Pile driving",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "EB",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Vaiade süvistamine",
+    "DefinitionEe": null,
+    "TermEn": "Pile screwing",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "EC",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Vaiade piikamine",
+    "DefinitionEe": null,
+    "TermEn": "Pile cropping",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "ED",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Kohtvaiade ehitamine",
+    "DefinitionEe": null,
+    "TermEn": "Cast in place piling",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": "F?",
+    "Level2": null,
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Betoonitööd",
+    "DefinitionEe": "paigalvalu betoonitööd (sh betoonpõrandad, rostvärgid ning teede ning muu infraehitusega seotud betoonitööd, veealused betoonitööd ja monoliitimine) ",
+    "TermEn": "Cast in place concrete works",
+    "DefinitionEn": "cast in place concrete works incl. concrete floors, foundations, underwater structures, infra structures etc."
+  },
+  {
+    "Level1": null,
+    "Level2": "FA",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Rakestamine",
+    "DefinitionEe": null,
+    "TermEn": "Shuttering",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "FB",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Sarrustamine",
+    "DefinitionEe": null,
+    "TermEn": "Reinforcement",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "FC",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Betoonimine",
+    "DefinitionEe": null,
+    "TermEn": "Concreting",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "FD",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Lahtirakestamine",
+    "DefinitionEe": null,
+    "TermEn": "Striking",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "FE",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Hooldus",
+    "DefinitionEe": null,
+    "TermEn": "Concrete curing",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": "G?",
+    "Level2": null,
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Elementehitus ",
+    "DefinitionEe": "ehituselementide (betoon-puit-metall) montaaž hoonete, sildade ja infaehituses",
+    "TermEn": "Assembling of prefabricated structural elements",
+    "DefinitionEn": "assembling structural elements from precast concrete, wood, steel etc. for buildings, bridges and infrastructures"
+  },
+  {
+    "Level1": "H?",
+    "Level2": null,
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Müüritööd",
+    "DefinitionEe": "tükkmaterjalidest (tellised, plokid, looduskivid, klaasplokid) ehitamine sise-ja välistöödel",
+    "TermEn": "Masonry works",
+    "DefinitionEn": "building from bricks, blocks, natural stone, glass blocks etc. Inside and outside"
+  },
+  {
+    "Level1": "J?",
+    "Level2": null,
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Puidutööd",
+    "DefinitionEe": "puitkkonstruktsioonide ehitus; sh puidust katuse-, seina- ja  põrandatarindite ehitus; saunad jne",
+    "TermEn": "Structural timber works",
+    "DefinitionEn": "building timber structures (roofs, walls, elements, floors, saunas etc.)"
+  },
+  {
+    "Level1": "K?",
+    "Level2": null,
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Katusekattetööd",
+    "DefinitionEe": "katusekattetööd koos sademeveesüsteemide ja turvavarustuse paigaldusega (va katuse kandekonstruktsiooni ehitus, mis läheb vastavalt elementehituse, puitkonstrutsioonide, betoonitööde vm alla)",
+    "TermEn": "Roof works",
+    "DefinitionEn": "roofworks including rainwater pipes and fittings and safety systems (excluding load bearing roof structure)"
+  },
+  {
+    "Level1": null,
+    "Level2": "KA",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Rullmaterjalidest katused",
+    "DefinitionEe": null,
+    "TermEn": "Bitumen sheet roofs",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "KB",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Eterniitkatused",
+    "DefinitionEe": null,
+    "TermEn": "Fibre cement roofs",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "KC",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Kivikatused",
+    "DefinitionEe": null,
+    "TermEn": "Stone roofs",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "KD",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Puitkatused",
+    "DefinitionEe": null,
+    "TermEn": "Wood roofs",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "KE",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Haljas- ja rookatused",
+    "DefinitionEe": null,
+    "TermEn": "Green roofs",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "KF",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Plekkkatused",
+    "DefinitionEe": null,
+    "TermEn": "Metal roofs",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "KG",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Klaaskatused",
+    "DefinitionEe": null,
+    "TermEn": "Glass roofs",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "KH",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Plastkatused",
+    "DefinitionEe": null,
+    "TermEn": "Plastic roofs",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "KJ",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Bituumenpõhistest tükkmaterjalidest katused",
+    "DefinitionEe": null,
+    "TermEn": "Bitumen shingle roofs",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": "L?",
+    "Level2": null,
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Isolatsioonitööd",
+    "DefinitionEe": "hoonete ja rajatiste ehitustöödega seotud isolatsioonitööd (va hüdroisolatsioon katusekattetöödel)",
+    "TermEn": "Insulation and sealing works",
+    "DefinitionEn": "thermal insulation and waterproofing "
+  },
+  {
+    "Level1": null,
+    "Level2": "LA",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Hüdroisolatsioon",
+    "DefinitionEe": null,
+    "TermEn": "Hydroisolation",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "LB",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Soojusisolatsioonitööd",
+    "DefinitionEe": null,
+    "TermEn": "Thermal insulation",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "LC",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Heliisolatsioonitööd",
+    "DefinitionEe": null,
+    "TermEn": "Sound isulation",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "LD",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Tuuletõkketööd",
+    "DefinitionEe": "tuuletõkkeplaatide, -paberite, -kangaste jm paigaldus",
+    "TermEn": "Wind boarding",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "LE",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Tuletõkketööd",
+    "DefinitionEe": null,
+    "TermEn": "Fire proofing",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": "M?",
+    "Level2": null,
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Avatäidete paigaldamine ja klaasfassaaditööd",
+    "DefinitionEe": "Akende, uste ja klaasfassaadide paigaldus",
+    "TermEn": "Installation of windows, doors and glass facades",
+    "DefinitionEn": "installation of windows, doors and glass facades"
+  },
+  {
+    "Level1": null,
+    "Level2": "MA",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Aknad",
+    "DefinitionEe": null,
+    "TermEn": "Windows",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "MB",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Uksed (välis)",
+    "DefinitionEe": null,
+    "TermEn": "Doors (external)",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "MC",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Siseuksed",
+    "DefinitionEe": null,
+    "TermEn": "Doors (internal)",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "MD",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Katuseaknad",
+    "DefinitionEe": null,
+    "TermEn": "Roof windows",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "ME",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Klaasfassaadid",
+    "DefinitionEe": null,
+    "TermEn": "Glass facades",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": "N?",
+    "Level2": null,
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Välisviimistlustööd",
+    "DefinitionEe": "hoonevälised viimistlustööd (sh plaatide paigaldus, krohvimine, vuukimine ja fassaadivarustuse paigaldus)",
+    "TermEn": "Exterior finishing works ",
+    "DefinitionEn": "exterior completion workls: plastering, painting, facade works, tiling etc."
+  },
+  {
+    "Level1": null,
+    "Level2": "NA",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Fassaaditööd",
+    "DefinitionEe": null,
+    "TermEn": "Facade works",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "NB",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Krohvitööd",
+    "DefinitionEe": null,
+    "TermEn": "Plastering",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "NC",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Maalritööd",
+    "DefinitionEe": null,
+    "TermEn": "Painting",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "ND",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Plaatimistööd",
+    "DefinitionEe": null,
+    "TermEn": "Tiling",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "NE",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Ehitusplaatide paigaldus",
+    "DefinitionEe": null,
+    "TermEn": "Panel facade installlation",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": "P?",
+    "Level2": null,
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Hoonesisesed tarinditööd",
+    "DefinitionEe": "hoonesiseste mittekandvate tarindite ehitamine ja paigaldus sh karkassitööd ja ehitusplaatide paigaldus, klaasplokkidest seinad jm)",
+    "TermEn": "Interior non-bearing element works",
+    "DefinitionEn": "construction and installation of interior non-bearing elements  (partitions and ceiling systems, suspended floors etc.)"
+  },
+  {
+    "Level1": null,
+    "Level2": "PA",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Siseseinad",
+    "DefinitionEe": null,
+    "TermEn": "Partitions",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "PB",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Tõstetud põrandad",
+    "DefinitionEe": null,
+    "TermEn": "Suspended floors",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "PC",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Ripplagede ehitamine",
+    "DefinitionEe": null,
+    "TermEn": "Suspended ceilings",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": "Q?",
+    "Level2": null,
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Siseviimistlustööd",
+    "DefinitionEe": "hoonesisesed viimistlustööd",
+    "TermEn": "Interior finishing works ",
+    "DefinitionEn": "interior plastering, painting, tiling, cladding, flooring etc."
+  },
+  {
+    "Level1": null,
+    "Level2": "QA",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Plaatide paigaldus",
+    "DefinitionEe": null,
+    "TermEn": "Panel installation",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "QB",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Krohvitööd",
+    "DefinitionEe": null,
+    "TermEn": "Plastering",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "QC",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Maalritööd",
+    "DefinitionEe": null,
+    "TermEn": "Painting",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "QD",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Põrandakattetööd",
+    "DefinitionEe": "sh PVC, vaip-, epopõrandakatted",
+    "TermEn": "Flooring",
+    "DefinitionEn": "including vinyl, carpet and epoxy floors"
+  },
+  {
+    "Level1": null,
+    "Level2": "QE",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Parketitööd",
+    "DefinitionEe": "sh laud- ja laminaatparketi paigaldus",
+    "TermEn": "Parquet flooring",
+    "DefinitionEn": "including solid wood and laminate floors"
+  },
+  {
+    "Level1": null,
+    "Level2": "QF",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Plaatimistööd",
+    "DefinitionEe": null,
+    "TermEn": "Tiling",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "QG",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Tapeetimine",
+    "DefinitionEe": null,
+    "TermEn": "Wallpapering",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "QH",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Vuukimine",
+    "DefinitionEe": null,
+    "TermEn": "Sealing",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": "R?",
+    "Level2": null,
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Hoonesiseste tehnosüsteemide ehitus",
+    "DefinitionEe": "hoonesiseste tehnosüsteemide väljaehitamine",
+    "TermEn": "Interior HVAC works",
+    "DefinitionEn": "interior HVAC works"
+  },
+  {
+    "Level1": null,
+    "Level2": "RA",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Veevarustuse ja kanalisatsioonitorustike ehitus",
+    "DefinitionEe": null,
+    "TermEn": "Water supply and drainage works",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "RB",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Küttetorustike ehitus",
+    "DefinitionEe": null,
+    "TermEn": "Heating pipes",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "RC",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Ventilatsiooni ja kliimasüsteemide ehitus",
+    "DefinitionEe": null,
+    "TermEn": "Ventilation and climate control systems",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "RD",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Automaatikasüsteemide ehitus",
+    "DefinitionEe": null,
+    "TermEn": "Automated building systems",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "RE",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Elektritööd (kaablite paigaldus)",
+    "DefinitionEe": null,
+    "TermEn": "Electric systems (cable installation)",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "RF",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Nõrkvoolutööd (kaablite paigaldus)",
+    "DefinitionEe": null,
+    "TermEn": "Data and electronic systems (cable installation)",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "RG",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Tehnoloogilised seadmed (süsteemid)",
+    "DefinitionEe": null,
+    "TermEn": "Technological systems for built-in equipment",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "RH",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Veevarustuse- ja kanalisatsioonisedamete paigaldus",
+    "DefinitionEe": null,
+    "TermEn": "Water supply and drainage equipment installation",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "RJ",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Kütteseadmete paigaldus",
+    "DefinitionEe": null,
+    "TermEn": "Heating equipment installation",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "RK",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Ventilatsiooni- ja kliimaseadmete paigaldus",
+    "DefinitionEe": null,
+    "TermEn": "Ventilation and climate contril equipment installation",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "RL",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Automaatikaseadmete paigaldus",
+    "DefinitionEe": null,
+    "TermEn": "Automated systems equipment installation",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "RM",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Elektriseadmete ja valgustite paigaldus",
+    "DefinitionEe": null,
+    "TermEn": "Electric equipment and lighting installation",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "RN",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Nõrkvooluseadmete paigaldus",
+    "DefinitionEe": null,
+    "TermEn": "Data and electronic systems equipment installation",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "RP",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Tehnoloogiliste seadmete paigaldus",
+    "DefinitionEe": null,
+    "TermEn": "Installation of built-in equipment",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": "S?",
+    "Level2": null,
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Sisustustööd ja seadmete paigaldamine",
+    "DefinitionEe": "sisustuse, mööbli ja seadmete paigaldamine va tehnoloogilised seadmed ja tootmisliinid",
+    "TermEn": "Furnishing and equipment installation works",
+    "DefinitionEn": "furnishing and equipment installation works excluding built-in equipment"
+  },
+  {
+    "Level1": "T?",
+    "Level2": null,
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Välisvõrkude rajamine ",
+    "DefinitionEe": "ehitiseväliste tehnovõrgkude rajamine ja liitumised",
+    "TermEn": "Exterior water and power supply, sewage, communication installation and related works",
+    "DefinitionEn": "external water and power supply, sewage, communication installation and related works"
+  },
+  {
+    "Level1": null,
+    "Level2": "TA",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Vee- ja kanalisatsioonitrasside rajamine",
+    "DefinitionEe": null,
+    "TermEn": "Water supply and drainage works",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "TB",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Gaasitrasside rajamine",
+    "DefinitionEe": null,
+    "TermEn": "Gas supply",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "TC",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Soojustrasside rajamine",
+    "DefinitionEe": null,
+    "TermEn": "Heating supply",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "TD",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Väliselektritööd",
+    "DefinitionEe": null,
+    "TermEn": "Electric cables",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "TE",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Välisnõrkvoolutööd",
+    "DefinitionEe": null,
+    "TermEn": "Data and electronic cables",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "TF",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Välisvalgustuse ja valgusfooride paigaldamine",
+    "DefinitionEe": null,
+    "TermEn": "Installation of external lighting and traffic lights",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": "U?",
+    "Level2": null,
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Teede ja platside ehitus",
+    "DefinitionEe": "teede ja platside rajamine - kõik teed  ja väljakud (maanteed, kergliiklusteed, raudteed, lennuväli) ja platsid (kinnistul ja väljaspool)",
+    "TermEn": "Construction of roads and pavements",
+    "DefinitionEn": "construction of roads (highways, pedestrian walkways and cycleways, railways, airport runways) and pavements (internal and external to the site)"
+  },
+  {
+    "Level1": null,
+    "Level2": "UA",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Katendid",
+    "DefinitionEe": "nt asfaltbetooni, sillutiskivide, äärekivide paigaldus, kivipurukatted",
+    "TermEn": "Pavements",
+    "DefinitionEn": "e.g. asphalt, stone pavements, edging, kerbstones, gravel"
+  },
+  {
+    "Level1": null,
+    "Level2": "UB",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Liikluskorraldus- ja ohutusvahendite paigaldus",
+    "DefinitionEe": "sh liiklusmärkide, teepiirete ja -märgiste jm paigaldus",
+    "TermEn": "Road signs, markings and furniture, incl. traffic safety elements",
+    "DefinitionEn": "including installation of traffic signs, road barriers etc."
+  },
+  {
+    "Level1": null,
+    "Level2": "UC",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Rööbasteede paigaldus",
+    "DefinitionEe": "rööbasteede ja pöörmete paigaldus",
+    "TermEn": "Railway installation",
+    "DefinitionEn": "ralitracks and -systems"
+  },
+  {
+    "Level1": "V?",
+    "Level2": null,
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Muud abitööd",
+    "DefinitionEe": "ehitusega kaasnevad abitööd  (sh kraana paigaldusega seotud tööd)",
+    "TermEn": "Temporary works",
+    "DefinitionEn": "temporary works related to construction (including works related to the crane installation)"
+  },
+  {
+    "Level1": null,
+    "Level2": "VA",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Tellingute paigaldamine",
+    "DefinitionEe": null,
+    "TermEn": "Scaffolding",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "VB",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Koristustööd",
+    "DefinitionEe": null,
+    "TermEn": "Cleaning",
+    "DefinitionEn": null
+  },
+  {
+    "Level1": null,
+    "Level2": "VC",
+    "Level3": null,
+    "Level4": null,
+    "TermEe": "Ajutised ladustamistööd",
+    "DefinitionEe": null,
+    "TermEn": "Temporary storage",
+    "DefinitionEn": null
+  }
+]

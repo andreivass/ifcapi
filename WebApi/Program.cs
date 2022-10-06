@@ -4,8 +4,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
 using System.Text;
 using WebApi;
 using WebApi.Dtos;
@@ -16,7 +14,6 @@ using WebApi.Models.Identity;
 var builder = WebApplication.CreateBuilder(args);
 
 #region JWT authentication configuration
-
 builder.Services.AddIdentity<AppUser, AppRole>()
     .AddEntityFrameworkStores<AppDbContext>()
     .AddDefaultTokenProviders();
@@ -42,7 +39,6 @@ builder.Services.AddAuthentication(o =>
 });
 
 builder.Services.AddAuthorization();
-
 #endregion JWT authentication configuration
 
 // Add services to the container.
@@ -75,9 +71,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 #region authentication
-
 var scope = app.Services.CreateScope();
-
 app.MapPost("/login", [AllowAnonymous] async (LoginDto loginDto) =>
 {
     var result = await scope.ServiceProvider.GetRequiredService<SignInManager<AppUser>>().PasswordSignInAsync(
@@ -133,6 +127,7 @@ app.MapPost("/register", [AllowAnonymous] async (RegisterDto registerDto) =>
 
             return Results.Ok(loginSuccessDto);
         }
+
         return Results.BadRequest("User not found after creation.");
     }
     else
@@ -145,27 +140,34 @@ app.MapPost("/register", [AllowAnonymous] async (RegisterDto registerDto) =>
 
     return Results.BadRequest($"Registration failed with errors: {errors}");
 });
-
 #endregion authentication
 
 #region Projects
+app.MapGet("/projects/{userId}",
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+async (string userId, AppDbContext dbContext) =>
+    await dbContext.Projects.Where(p => p.AppUserId == userId).ToListAsync());
 
-app.MapGet("/projects", [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)] async (AppDbContext dbContext) =>
-    await dbContext.Projects.ToListAsync());
+app.MapGet("/projects/{projectId}/{userId}",
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+async (int projectId, string userId, AppDbContext dbContext) =>
+    await dbContext.Projects.FirstOrDefaultAsync(p => p.ProjectId == projectId && p.AppUserId == userId)
+        is Project project ? Results.Ok(project) : Results.NotFound()); ;
 
-app.MapGet("/projects/{id}", async (int id, AppDbContext dbContext) =>
-    await dbContext.Projects.FindAsync(id)
-        is Project project ? Results.Ok(project) : Results.NotFound());
-
-app.MapPost("/projects", async (Project project, AppDbContext dbContext) =>
+app.MapPost("/projects/{userId}",
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+async (string userId, Project project, AppDbContext dbContext) =>
 {
+    project.AppUserId = userId;
     dbContext.Projects.Add(project);
     await dbContext.SaveChangesAsync();
 
     return Results.Created($"/projects/{project.ProjectId}", project);
 });
 
-app.MapPut("/projects/{id}", async (int id, Project project, AppDbContext dbContext) =>
+app.MapPut("/projects/{id}", 
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)] 
+async (int id, Project project, AppDbContext dbContext) =>
 {
     dbContext.Projects.Update(project);
 
@@ -174,7 +176,9 @@ app.MapPut("/projects/{id}", async (int id, Project project, AppDbContext dbCont
     return Results.Ok(project);
 });
 
-app.MapDelete("/projects/{id}", async (int id, AppDbContext dbContext) =>
+app.MapDelete("/projects/{id}", 
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)] 
+async (int id, AppDbContext dbContext) =>
 {
     if (await dbContext.Projects.FindAsync(id) is Project project)
     {
@@ -191,109 +195,18 @@ app.MapDelete("/projects/{id}", async (int id, AppDbContext dbContext) =>
 
 #region CciEePps
 
-app.MapGet("/ccieepps", async (AppDbContext dbContext) =>
+app.MapGet("/ccieepps",
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)] 
+async (AppDbContext dbContext) =>
     await dbContext.CciEePps.ToListAsync());
-
-/*app.MapGet("/ccieepps/{id}", async (int id, AppDbContext dbContext) =>
-    await dbContext.CciEePps.FindAsync(id)
-        is CciEePp cciEepp ? Results.Ok(cciEepp) : Results.NotFound());
-
-app.MapPost("/ccieepps/list", async (List<CciEePp> cciEepps, AppDbContext dbContext) =>
-{
-    await dbContext.CciEePps.AddRangeAsync(cciEepps);
-    await dbContext.SaveChangesAsync();
-
-    return Results.Created($"/ccieepps/", cciEepps);
-});
-
-app.MapPost("/ccieepps", async (CciEePp cciEepp, AppDbContext dbContext) =>
-{
-    dbContext.CciEePps.Add(cciEepp);
-    await dbContext.SaveChangesAsync();
-
-    return Results.Created($"/ccieepps/{cciEepp.CciEePpId}", cciEepp);
-});
-
-app.MapPost("/ccieeppslist", async (ICollection<CciEePp> cciEepps, AppDbContext dbContext) =>
-{
-    dbContext.CciEePps.AddRange(cciEepps);
-    await dbContext.SaveChangesAsync();
-
-    return Results.Ok(cciEepps);
-});
-
-app.MapPut("/ccieepps/{id}", async (int id, CciEePp cciEepp, AppDbContext dbContext) =>
-{
-    dbContext.CciEePps.Update(cciEepp);
-
-    await dbContext.SaveChangesAsync();
-
-    return Results.Ok(cciEepp);
-});
-
-app.MapDelete("/ccieepps/{id}", async (int id, AppDbContext dbContext) =>
-{
-    if (await dbContext.CciEePps.FindAsync(id) is CciEePp cciEepp)
-    {
-        dbContext.CciEePps.Remove(cciEepp);
-        await dbContext.SaveChangesAsync();
-
-        return Results.Ok();
-    }
-
-    return Results.NotFound();
-});*/
 
 #endregion CciEePps
 
-#region ModelElement
-
-/*app.MapGet("/modelelements", async (AppDbContext dbContext) =>
-    await dbContext.ModelElements.ToListAsync());
-
-app.MapGet("/modelelements/{id}", async (int id, AppDbContext dbContext) =>
-    await dbContext.ModelElements.FindAsync(id)
-        is ModelElement modelElement ? Results.Ok(modelElement) : Results.NotFound());
-
-app.MapPost("/modelelements", async (ModelElement modelElement, AppDbContext dbContext) =>
-{
-    dbContext.ModelElements.Add(modelElement);
-    await dbContext.SaveChangesAsync();
-
-    return Results.Created($"/modelelements/{modelElement.ModelElementId}", modelElement);
-});
-
-app.MapPut("/modelelements/{id}", async (int id, ModelElement modelElement, AppDbContext dbContext) =>
-{
-    dbContext.ModelElements.Update(modelElement);
-
-    await dbContext.SaveChangesAsync();
-
-    return Results.Ok(modelElement);
-});
-
-app.MapDelete("/modelelements/{id}", async (int id, AppDbContext dbContext) =>
-{
-    if (await dbContext.ModelElements.FindAsync(id) is ModelElement modelElement)
-    {
-        dbContext.ModelElements.Remove(modelElement);
-        await dbContext.SaveChangesAsync();
-
-        return Results.Ok();
-    }
-
-    return Results.NotFound();
-});*/
-
-#endregion ModelElement
-
 #region WorkPackage
 
-/*app.MapGet("/workpackages", async (AppDbContext dbContext) =>
-    await dbContext.WorkPackages
-    .ToListAsync());*/
-
-app.MapGet("/workpackages/byproject/", async (int id, AppDbContext dbContext) =>
+app.MapGet("/workpackages/byproject/",
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)] 
+async (int id, AppDbContext dbContext) =>
 {
     var workPackages = await dbContext.WorkPackages.Where(x => x.ProjectId == id)
         .Include(x => x.ModelElementInWorkPackages)
@@ -326,12 +239,9 @@ app.MapGet("/workpackages/byproject/", async (int id, AppDbContext dbContext) =>
     return dtos;
 });
 
-
-/*app.MapGet("/workpackages/{id}", async (int id, AppDbContext dbContext) =>
-    await dbContext.WorkPackages.FindAsync(id)
-        is WorkPackage workPackage ? Results.Ok(workPackage) : Results.NotFound());*/
-
-app.MapPost("/workpackages", async (WorkPackageDto dto, AppDbContext dbContext) =>
+app.MapPost("/workpackages", 
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)] 
+async (WorkPackageDto dto, AppDbContext dbContext) =>
 {
     var workPackage = new WorkPackage
     {
@@ -365,16 +275,13 @@ app.MapPost("/workpackages", async (WorkPackageDto dto, AppDbContext dbContext) 
 
                 dbContext.ModelElements.Add(modelElement);
                 await dbContext.SaveChangesAsync();
-
                 newElementId = modelElement.ModelElementId;
             }
-
             dbContext.ModelElementInWorkPackages.Add(new()
             {
                 ModelElementId = existingElement?.ModelElementId ?? newElementId,
                 WorkPackageId = workPackage.WorkPackageId
             });
-
             await dbContext.SaveChangesAsync();
         }
     }
@@ -382,7 +289,9 @@ app.MapPost("/workpackages", async (WorkPackageDto dto, AppDbContext dbContext) 
     return Results.Created($"/workpackages/{dto.WorkPackageId}", dto);
 });
 
-app.MapPut("/workpackages/{id}", async (int id, WorkPackage workPackage, AppDbContext dbContext) =>
+app.MapPut("/workpackages/{id}",
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)] 
+async (int id, WorkPackage workPackage, AppDbContext dbContext) =>
 {
     dbContext.WorkPackages.Update(workPackage);
 
@@ -391,7 +300,9 @@ app.MapPut("/workpackages/{id}", async (int id, WorkPackage workPackage, AppDbCo
     return Results.Ok(workPackage);
 });
 
-app.MapDelete("/workpackages/{id}", async (int id, AppDbContext dbContext) =>
+app.MapDelete("/workpackages/{id}",
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)] 
+async (int id, AppDbContext dbContext) =>
 {
     if (await dbContext.WorkPackages.FindAsync(id) is WorkPackage workPackage)
     {
@@ -405,5 +316,7 @@ app.MapDelete("/workpackages/{id}", async (int id, AppDbContext dbContext) =>
 });
 
 #endregion WorkPackage
+
+DataInitializers.AddClassificators(scope.ServiceProvider.GetRequiredService<AppDbContext>());
 
 app.Run();
