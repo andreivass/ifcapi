@@ -51,6 +51,12 @@ builder.Services.AddSwaggerGen(o =>
     o.AddSecurityRequirement(JwtHelper.CreateSecurityRequirements());
 });
 
+//services cors
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+{
+    builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+}));
+
 var connectionString = builder.Configuration.GetConnectionString("MariaDbConnection");
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(
@@ -60,13 +66,17 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI();
+
+if (!app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseHttpsRedirection();
+    app.Urls.Add("http://localhost:5208");
+    app.Urls.Add("http://10.0.0.4:5208");
 }
 
-app.UseHttpsRedirection();
+app.UseCors("corsapp");
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -317,6 +327,6 @@ async (int id, AppDbContext dbContext) =>
 
 #endregion WorkPackage
 
-DataInitializers.AddClassificators(scope.ServiceProvider.GetRequiredService<AppDbContext>());
+await DataInitializers.AddClassificators(scope.ServiceProvider.GetRequiredService<AppDbContext>());
 
 app.Run();

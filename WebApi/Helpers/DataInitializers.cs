@@ -20,7 +20,7 @@ namespace WebApi.Helpers
         {
             if (context.CciEePps?.FirstOrDefault() == null)
             {
-                var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"SampleData\classificators.json");
+                var path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), @"SampleData/classificators.json");
                 var lines = File.ReadAllText(path);
                 var classificators = JsonSerializer.Deserialize<List<CciEePp>>(lines);
                 if (classificators != null)
