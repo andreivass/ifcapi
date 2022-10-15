@@ -296,6 +296,8 @@ async (WorkPackageDto dto, AppDbContext dbContext) =>
         }
     }
 
+    dto.ClassificatorNameEe = (await dbContext.CciEePps.FindAsync(workPackage.CciEePpId))!.TermEe;
+
     return Results.Created($"/workpackages/{dto.WorkPackageId}", dto);
 });
 
