@@ -73,7 +73,7 @@ if (!app.Environment.IsDevelopment())
 {
     app.UseHttpsRedirection();
     app.Urls.Add("http://localhost:5208");
-    app.Urls.Add("http://10.0.0.4:5208");
+    app.Urls.Add("http://193.40.231.167:5208");
 }
 
 app.UseCors("corsapp");
