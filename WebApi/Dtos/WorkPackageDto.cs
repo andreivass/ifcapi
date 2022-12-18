@@ -1,6 +1,4 @@
-﻿using WebApi.Models;
-
-namespace WebApi.Dtos
+﻿namespace WebApi.Dtos
 {
     /// <summary>
     /// Dto for work package.
